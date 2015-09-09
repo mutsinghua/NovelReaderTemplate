@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <drawable name="transparent_background">#00000000</drawable>
+  <color name="content_hightlight">#fff7c57b</color>
+  <color name="white">#FFFFFFFF</color>
+  <color name="article_content">#FF000000</color>
+  <color name="article_title">#fff4deaf</color>
+  <color name="gray">#ffbbbbbb</color>
+</resources>

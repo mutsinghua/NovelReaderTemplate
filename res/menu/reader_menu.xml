@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android" >
+
+<item android:id="@+id/turn_down_page" android:title="@string/turn_down" android:menuCategory="system"></item>
+<item android:id="@+id/turn_up_page" android:title="@string/turn_up" android:menuCategory="system"></item>
+<item android:id="@+id/jump_to" android:menuCategory="system" android:title="@string/jump_to"></item>
+</menu>

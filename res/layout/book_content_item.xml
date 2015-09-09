@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" 
+ xmlns:android="http://schemas.android.com/apk/res/android">
+	<TextView
+	 android:id="@+id/book_content_text"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:background="@drawable/content"
+		android:layout_centerInParent="true"
+		></TextView>
+		
+			<TextView
+	 android:id="@+id/book_content_text_text"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:textColorHighlight="@color/content_hightlight"
+		android:textColor="@color/content_hightlight"
+		android:gravity="center"
+		android:singleLine="true"
+		android:ellipsize="marquee"
+		android:paddingLeft="25dp"
+		android:paddingRight="25dp"
+		android:layout_centerInParent="true"
+		></TextView>
+		</RelativeLayout>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content" android:layout_height="wrap_content"
+	android:orientation="horizontal" android:layout_margin="10dp"
+	android:gravity="center_vertical">
+	<Button android:id="@+id/delete_marked" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:text="@string/delete"
+		android:paddingLeft="10dp" android:paddingRight="10dp"
+		android:layout_alignParentRight="true" android:layout_centerVertical="true"></Button>
+	<LinearLayout android:id="@+id/mark_touch" android:layout_width="fill_parent" android:layout_marginRight="10dp"
+		android:layout_height="wrap_content" android:orientation="vertical"
+		android:layout_toLeftOf="@id/delete_marked">
+		<LinearLayout android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:orientation="horizontal"
+			android:gravity="center_vertical">
+			<TextView android:id="@+id/book_name" android:layout_width="fill_parent" android:layout_weight="1"
+				android:layout_height="wrap_content"  android:textSize="16dp" 
+				android:text="BookName"></TextView>
+			<TextView android:id="@+id/save_reason"
+				android:layout_width="wrap_content"  android:layout_height="wrap_content" 
+				android:textSize="14dp" android:textColor="@color/gray"
+				android:text="SaveReasion"></TextView>
+		</LinearLayout>
+		<RelativeLayout android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:orientation="horizontal"
+			android:gravity="center_vertical">
+			<TextView android:id="@+id/book_progress" android:layout_alignParentLeft="true"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:textSize="14dp" android:text="30%">
+			</TextView>
+			<TextView android:id="@+id/save_date" android:layout_width="wrap_content"
+				android:layout_gravity="right|center_vertical"
+				android:layout_height="wrap_content" android:textSize="14dp" android:layout_alignParentRight="true"
+				android:layout_marginLeft="10dp" android:textColor="@color/gray"
+				android:text="SaveDate"></TextView>
+		</RelativeLayout>
+	</LinearLayout>
+	
+</RelativeLayout>

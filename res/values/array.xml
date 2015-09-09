@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="land_port_list_preference">
+        <item>竖屏</item>
+        <item>横屏</item>  
+    </string-array>
+    
+     <string-array name="land_port_value_list_preference">
+        <item>port</item>
+        <item>land</item>  
+    </string-array>
+</resources>

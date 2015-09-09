@@ -1,0 +1,234 @@
+<?xml version="1.0" ?>
+<project name="build_common" default=""  basedir=".">
+
+	<!-- ######属性定义部分###### -->
+	<!-- 时间戳属性定义，用于包的文件名 -->
+	<tstamp>
+		<format property="build_date" pattern="yyyyMMddHHmmss"/>
+	</tstamp>
+	
+	<!-- 项目的目录属性定义 -->
+	<property name="src" value="${project_path}\src"/>	<!-- 源代码 -->
+	<property name="core" value="${project_path}\core"/>	<!-- 源代码 -->
+	<property name="res" value="${project_path}\res"/>	<!-- 资源 -->
+	<property name="lib" value="${project_path}\lib"/>	<!-- 库 -->
+	<property name="assets" value="${project_path}\assets"/>		<!-- assets -->
+	<property name="bin" value="${project_path}\bin"/>	<!-- 包目录 -->
+	<property name="classes" value="${project_path}\classes"/>	<!-- classes -->
+	<property name="gen" value="${bin}\gen" />	<!-- 生成R.java -->
+
+	<!-- 编码设置 -->
+	<property name="encoding" value="UTF-8"/>	
+	
+	<!-- 文件名定义，由前缀+时间戳组成 -->
+	<property name="file_name" value="${project_name}"/>
+
+	<!-- Android framework定义 -->
+    <property name="android_framework" value="${android_tools}\lib\framework.aidl"/>
+	<property name="dex" value="${bin}\classes.dex"/>
+
+    <!-- 工具属性定义 -->
+    <property name="aapt" value="${android_platform_tools}\aapt"/>
+    <property name="aidl" value="${android_platform_tools}\aidl" />
+    <property name="adb" value="${android_platform_tools}\adb"/>
+    <property name="dx" value="${android_platform_tools}\dx.bat"/>
+	<property name="apkbuilder" value="${android_home}\tools\apkbuilder.bat"/>
+	<property name="signer" value="jarsigner"/>	<!--待确认-->
+	<property name="androidjar" value="${android_home}\platforms\android-9\android.jar"/>
+
+
+    <!-- ###### Target定义部分 ###### -->
+    <!-- 初始化目录 -->
+    <target name="init">
+		<echo>如果bin和lib目录不存在，则创建</echo>
+		<mkdir dir="${bin}" />
+		<mkdir dir="${lib}" />
+
+		<echo>清空bin和classes目录</echo>
+		<delete dir="${classes}"/>
+		<delete>
+			<fileset dir="${bin}" includes="**/**"/>
+		</delete>
+
+		<mkdir dir="${classes}" />
+		<mkdir dir="${gen}" />
+	</target>
+
+    <!-- 为该项目资源生成R.java文件 -->
+    <target name="generate">
+        <echo>Generating R.java / Manifest.java from the resources...</echo>
+        <exec executable="${aapt}" failonerror="true">
+            <arg value="package" />
+            <arg value="-m" />
+            <arg value="-J" />
+            <arg value="${gen}" />
+            <arg value="-M" />
+            <arg value="AndroidManifest.xml" />
+            <arg value="-S" />
+            <arg value="${res}" />
+            <arg value="-I" />
+            <arg value="${androidjar}" />
+        </exec>
+    </target>
+
+    <!-- 从*.aidl文件生成java classes -->
+    <target name="aidl">
+        <echo>Compiling aidl files into Java classes...</echo>
+        <apply executable="${aidl}" failonerror="true">
+            <arg value="-p${android_framework}" />
+            <arg value="-I${src}" />
+            <fileset dir="${src}">
+                <include name="**/*.aidl"/>
+            </fileset>
+        </apply>
+    </target>
+
+    <!-- 编译项目的.java文件为.class文件 -->
+    <target name="compile">
+    	<echo>开始编译...</echo>
+        <javac encoding="UTF-8" 
+        	debug="false" 
+        	extdirs="" 
+        	target="1.6" 
+            destdir="${classes}"
+            bootclasspath="${androidjar}">
+        	<src path="${src}"/>
+        	<src path="${core}"/>
+        	<src path="${gen}"/>
+            <classpath>
+                <fileset dir="${lib}" includes="*.jar"/>
+            </classpath>
+         </javac>
+    	<echo>结束编译...</echo>
+    </target>
+
+	<!-- 打包 -->  
+	<target name="package">
+	    <jar basedir="${classes}" destfile="temp.jar"/>
+	</target> 
+
+	<!-- 对打包后的结果进行混淆 -->
+	<target name="obfuscate">
+	    <java jar="${proguard_home}\lib\proguard.jar" fork="true" failonerror="true">  
+	        <jvmarg value="-Dmaximum.inlined.code.length=32"/>  
+	        <arg value="-injars temp.jar"/>  
+	        <arg value="-outjars obfuscated.jar"/>  
+	        <arg value="-libraryjars ${androidjar}"/> 
+	        <arg value="-libraryjars ${lib}/Analytics_Android_SDK_2.1.jar"/> 
+	        <arg value="-libraryjars ${lib}/smartmad-sdk-android.jar"/> 
+	        <arg value="-libraryjars ${lib}/GoogleAdMobAdsSdk-4.1.0.jar"/> 
+	        <!-- <arg value="-libraryjars ${library-jar}/some_lib_used.jar"/> -->  
+	        <!-- <arg value="-dontpreverify"/> --> 
+	        <arg value="-dontoptimize"/>  
+	        <arg value="-dontusemixedcaseclassnames"/>  
+			<arg value="-keep public class *"/>
+	        <!-- <arg value="-optimizationpasses 7"/>  -->
+	        <arg value="-verbose"/>  
+	        <arg value="-dontskipnonpubliclibraryclasses"/>  
+	        <arg value="-dontskipnonpubliclibraryclassmembers"/>  
+	    </java>  
+	    <delete file="temp.jar"/>
+	    <delete dir="${classes}"/>
+	    <mkdir dir="${classes}"/>
+	    <unzip src="obfuscated.jar" dest="${classes}"/>
+	    <delete file="obfuscated.jar"/>
+	</target>  
+	
+    <!-- 将该项目经过混淆的.class文件转换为.dex文件 -->
+    <target name="dex">
+        <echo>Converting compiled files and external libraries into ${bin}/${dex}...</echo>
+        <apply executable="${dx}" failonerror="true" parallel="true">
+            <arg value="--dex" />
+            <arg value="--output=${dex}" />
+            <arg path="${classes}" />
+            <fileset dir="${lib}" includes="*.jar"/>
+        </apply>
+    </target>
+
+    <!-- 打包项目的资源文件 -->
+    <target name="package_res_with_assets">
+        <echo>Packaging resources and assets...</echo>
+        <exec executable="${aapt}" failonerror="true">
+            <arg value="package" />
+            <arg value="-f" />
+            <arg value="-M" />
+            <arg value="AndroidManifest.xml" />
+            <arg value="-S" />
+            <arg value="${res}" />
+            <arg value="-A" />
+            <arg value="${assets}" />
+            <arg value="-I" />
+            <arg value="${androidjar}" />
+            <arg value="-F" />
+            <arg value="${bin}\${project_name}.ap_" />
+        </exec>
+    </target>
+
+    <!-- 打包项目资源文件，但不包括assets -->
+    <target name="package_res_without_assets">
+        <echo>Packaging resources...</echo>
+        <exec executable="${aapt}" failonerror="true">
+            <arg value="package" />
+            <arg value="-f" />
+            <arg value="-M" />
+            <arg value="AndroidManifest.xml" />
+            <arg value="-S" />
+            <arg value="${res}" />
+            <!-- No assets directory -->
+            <arg value="-I" />
+            <arg value="${androidjar}" />
+            <arg value="-F" />
+            <arg value="${bin}\${project_name}.ap_" />
+        </exec>
+    </target>
+
+    <!-- 打包应用，此处不做签名，在后续的步骤中可以使用商业发布的密钥文件进行签名 -->
+    <target name="release">
+        <echo>Packaging ${out-unsigned-package} for release...</echo>
+        <exec executable="${apkbuilder}" failonerror="true">
+            <arg value="${bin}\${file_name}_unsigned.apk" />
+            <arg value="-u" />
+            <arg value="-z" />
+            <arg value="${bin}\${project_name}.ap_" />
+            <arg value="-f" />
+            <arg value="${dex}" />
+            <arg value="-rf" />
+            <arg value="${src}" />
+            <arg value="-rj" />
+            <arg value="${lib}" />
+        </exec>
+        <echo>It will need to be signed with jarsigner before being published.</echo>
+    </target>
+
+	<!-- 签名 -->
+	<target name="sign">
+		<echo>begin sign...</echo>
+		<exec executable="${signer}" failonerror="true">
+			<arg value="-verbose"/>
+			<arg value="-keystore"/> 
+			<arg value="${keystore}"/>
+			<arg value="-storepass"/>
+			<arg value="${key_pass}"/>
+			<arg value="-keypass"/>
+			<arg value="${key_pass}"/>
+			<arg value="-signedjar"/>
+			<arg value="${bin}\${file_name}.apk"/>
+			<arg value="${bin}\${file_name}_unsigned.apk"/>
+			<arg value="${key_name}"/>
+		</exec>	
+		<echo>end sign...</echo>
+	</target>
+
+	<!-- 拷贝构建结果到bin目录-->
+	<target name="copy-apk">
+		<mkdir dir="${project_dir}" />
+		<delete file="${bin}\${file_name}_unsigned.apk"/>
+	<copy todir="${project_dir}">
+			<fileset dir="${bin}" >
+				<filename name="*.apk"/>
+			</fileset>
+		</copy>
+		
+	</target>
+	
+</project>

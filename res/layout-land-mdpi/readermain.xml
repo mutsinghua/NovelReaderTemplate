@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:umadsdk="http://schemas.android.com/apk/res/com.win16.reader.annebabytran"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:orientation="vertical"
+	android:id="@+id/rootview"
+	>
+	<LinearLayout android:id="@+id/textLayout_outside"
+		android:layout_weight="1" android:layout_width="fill_parent"
+		android:layout_height="fill_parent" android:orientation="vertical"
+		android:background="@drawable/backgroud_land" android:paddingLeft="22dp"
+		android:paddingBottom="20dp" android:paddingRight="22dp"
+		android:paddingTop="20dp">
+		<ScrollView android:id="@+id/scrollView"
+			android:orientation="vertical" android:layout_width="fill_parent"
+			android:layout_weight="1" android:layout_height="fill_parent">
+			<com.win16.reader.ui.widget.ReadView
+				android:id="@+id/mainReader" android:layout_width="fill_parent"
+				android:maxLength="1024000" android:layout_height="fill_parent"
+				android:textColor="@color/article_content" />
+		</ScrollView>
+		<LinearLayout android:id="@+id/mainmenu_Layout"
+			android:layout_width="fill_parent" android:layout_height="40dp"
+			android:orientation="horizontal" android:gravity="center">
+			<Button android:id="@+id/menu_touch" android:layout_width="40dp"
+				android:layout_height="40dp" 
+				android:textSize="19dp" android:clickable="true" android:background="@drawable/menubutton" />
+			<Button android:id="@+id/article_title" android:layout_weight="1"
+				android:layout_width="fill_parent" android:layout_height="40dp" android:textSize="15dp"
+				android:maxWidth="140dp"  android:gravity="center_vertical|left"
+				android:singleLine="true" android:textColor="@android:color/white"
+				android:textColorHighlight="@color/content_hightlight"
+				android:background="@drawable/categorybutton" android:clickable="true" />
+			<Button android:id="@+id/article_jump_next" android:textSize="15dp"
+				android:layout_width="60dp" android:layout_height="40dp"
+				android:text="@string/next" android:textColor="@android:color/white"
+				android:textColorHighlight="@color/content_hightlight" android:gravity="center"
+				android:clickable="true" android:background="@drawable/main_menubg2" />
+			<Button android:id="@+id/article_scroll" android:layout_width="60dp" android:textSize="15dp"
+				android:layout_height="40dp" 	android:text="@string/scroll_screen"
+				android:textColor="@android:color/white" android:background="@drawable/main_menubg2"
+				android:textColorHighlight="@color/content_hightlight" android:gravity="center"
+				android:clickable="true"/>
+		</LinearLayout>
+	</LinearLayout>
+	<RelativeLayout 
+	android:layout_width="fill_parent" android:layout_height="wrap_content"
+	android:id="@+id/ad_layout"
+	>	<com.google.ads.AdView 
+xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+android:id="@+id/admobView"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+ads:adSize="BANNER"
+android:visibility="gone"
+ads:adUnitId="a14e05ebd8994f7"
+></com.google.ads.AdView></RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="250dp" android:layout_height="wrap_content"
+	android:orientation="vertical" android:gravity="center_horizontal">
+	<TextView  android:id="@+id/imply"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:textSize="22dp" android:gravity="center"
+		></TextView>
+	<SeekBar android:id="@+id/seekbar" android:layout_width="200dp"
+		android:layout_height="wrap_content"></SeekBar>
+	<RelativeLayout android:layout_width="fill_parent"
+		android:layout_height="50dp" android:orientation="horizontal"
+		android:gravity="center">
+		
+		<TextView android:id="@+id/currentPos" android:layout_centerInParent="true"
+		android:inputType="number" android:gravity="center"
+		android:textSize="22dp" android:textColor="@color/white"
+			android:layout_width="50dp" android:layout_height="wrap_content" />
+			<Button android:id="@+id/minus" android:layout_toLeftOf="@id/currentPos" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="-" android:layout_marginRight="15dp"></Button>
+			<Button android:id="@+id/plus" android:layout_toRightOf="@id/currentPos" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+" android:layout_marginLeft="15dp"></Button>
+	</RelativeLayout>
+</LinearLayout>

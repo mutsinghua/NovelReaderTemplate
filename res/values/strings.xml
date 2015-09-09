@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!-- #STRING for auto start --> <string name="app_name">安妮寶貝文集（繁體版）</string>
+<string name="summary_about">关于安妮寶貝文集（繁體版）</string>
+<string name="about_this">安妮寶貝文集（繁體版）\n版本:1.1\n内核版本:5.0 build 022\n开发者:win16.com\n官方网站:http://www.win16.com\n联系作者:mutsinghua@gmail.com\n\n申明：本软件所用素材均来自互联网，如果您觉得侵犯了您的权益，请立即告知，我们将在第一时间内删除。</string>
+<!-- #STRING for auto end -->
+<string name="set_font_size">字體大小</string>
+
+<string name="summary_font_size">設置字體大小</string>
+
+<string name="set_auto_save">自動封存</string>
+
+<string name="summary_auto_save">自動保存當前閱讀進度</string>
+
+<string name="set_line_height">行間距</string>
+
+<string name="summary_line_height">設置每行文字的高度</string>
+
+<string name="set_scroll_speed">滾屏速度</string>
+
+<string name="summary_scroll_speed">設置自動滾屏時的閱讀速度</string>
+
+<string name="set_light">螢幕亮度</string>
+
+<string name="summary_light">設置螢幕亮度</string>
+<string name="set_disable_jump_menu">啟用跳轉菜單</string>
+<string name="summary_disable_jump_menu">長按閱讀介面可顯示跳轉功能表</string>
+
+
+<string name="adv_setup">高級設置</string>
+<string name="set_defalut_value">恢復預設值</string>
+<string name="summary_defalut_value">恢復到程式的設置的最初值</string>
+
+<string name="turn_up">上翻頁</string>
+<string name="turn_down">下翻頁</string>
+<string name="jump_to">跳至...</string>
+<string name="jump_menu">跳轉</string>
+<string name="ok">確定</string>
+<string name="cancel">取消</string>
+<string name="menu_all_mark">所有書簽</string>
+<string name="menu_user_mark">使用者書簽</string>
+<string name="menu_auto_mark">自動封存</string>
+<string name="jump_to_begin">跳至開頭</string>
+<string name="jump_to_end">跳至結尾</string>
+<string name="jump_to_imply">跳轉，請輸入0~100(%)</string>
+<string name="set_about">關於</string>
+<string name="fast_slow">慢\u003c\u0020\u0020\u0020\u0020\u0020\u0020\u003e快</string>
+<string name="dark_light">暗\u003c\u0020\u0020\u0020\u0020\u0020\u003e亮</string>
+<string name="set_hide_ad">隱藏廣告</string>
+<string name="summary_hide_ad">點擊頁面底部廣告後可隱藏廣告</string>
+<string name="set_full_screen">全屏閱讀</string>
+<string name="summary_full_screen">進行全屏閱讀</string>
+<string name="scroll_screen">滾屏</string>
+<string name="scroll_screen_stop">停止</string>
+<string name="read_error">錯誤:內容讀取失敗，請檢查SD卡是否正常工作</string>
+<string name="last_read">最後閱讀</string>
+<string name="last_book_read">系統存檔</string>
+<string name="error">錯誤</string>
+<string name="restore_to_default">您要恢復到最初設置嗎？</string>
+<string name="read_file_error">存儲卡空間不足或手機記憶體不足，無法啟動程式，請檢查存儲卡和刪除不常用的軟體。您可以嘗試恢復初始設置來修復此問題，此項操作不會刪除您的閱讀進度，是否要恢復初始設置？</string>
+<string name="mark_as_readed">標為已讀</string>
+<string name="mark_as_unread">標為未讀</string>
+<string name="mark_as_reading">標為正在讀</string>
+<string name="mark_all">所有文章</string>
+<string name="mark">標記</string>
+<string name="longlongago">上古時代</string>
+<string name="warning">警告</string>
+<string name="set_clear_cache">清除緩存</string>
+<string name="summary_clear_cache">手機記憶體不足時可嘗試使用此項釋放空間</string>
+<string name="cleared_cache">緩存已清除</string>
+<string name="restored">設置已還原</string>
+<string name="delete_all">刪除所有書簽</string>
+<string name="delete_confirm">確定要刪除當前頁面所有書簽？</string>
+<string name="no_mark_available">沒有書簽</string>
+<string name="menu_imply">菜單</string>
+<string name="next">下章</string>
+<string name="prev">上章</string>
+<string name="to_next">下一章</string>
+<string name="to_prev">上一章</string>
+<string name="already_last">已經是最後一章</string>
+<string name="already_first">已經是第一章</string>
+<string name="setup_waiting">載入中，請稍候...</string>
+<string name="set_contact_us">聯繫我們</string>
+<string name="summary_contact_us">給我們發送電子郵件</string>
+<string name="summary_adviser">把您的建議或意見告訴我們</string>
+<string name="adviser">意見回饋</string>
+<string name="choose_mail_client">請選擇郵件用戶端</string>
+<string name="set_visit_website">訪問官網win16.com</string>
+<string name="summary_visit_website">想閱讀更多的書嗎？歡迎來我們的網站下載</string>
+  <string name="search_title">搜索</string> 
+  <string name="search_hint">請輸入章節名稱</string> 
+    <string name="seatch_none_result">沒有搜索到相關章節</string> 
+<string name="save_successful">保存成功</string>
+<string name="set_land_port">橫豎屏設置</string>
+<string name="summary_land_port">設置螢幕方向</string>
+<string name="land_dir">橫屏</string>
+<string name="port_dir">豎屏</string>
+<string name="system_menu">系統功能表</string>
+<string name="save_marked">保存書簽</string>
+<string name="font_setup">字體設置</string>
+<string name="advanced_setup">高級設置</string>
+<string name="return_category">返回目錄</string>
+<string name="read_mark">讀取書簽</string>
+<string name="light_setup">亮度設置</string>
+<string name="scroll_speed">滾屏速度</string>
+<string name="exit_program">退出程式</string>
+<string name="about_us">關於我們</string>
+<string name="search_category">搜索目錄</string>
+<string name="example">祝您愉快</string>
+<string name="delete">刪除</string>
+
+<string name="downloading">獲取中...</string>
+<string name="click_to_get_detail">點擊查看詳情</string>
+<string name="download">下載</string>
+<string name="search_book_hit">請輸入小說名稱或相關詞</string>
+<string name="ebook_category">電子書分類列表</string>
+<string name="search_txt_is_null">輸入為空會列出所有電子書</string>
+<string name="more_novel">更多小說</string>
+<string name="set_share">分享給朋友</string>
+<string name="summary_share">將此書推薦給朋友,一起分享書中的快樂!</string>
+<string name="share_title">分享</string>
+<string name="share_text">Hi, BOOK_NAME這本書相當精彩, 推薦你也去下載來看看,下載地址:</string>
+<string name="net_error">網路錯誤,請稍後再試</string>
+<string name="next_not_available">下面沒有了啦~您已閱完本書,是否需要看看其他的書呢?</string>
+<string name="try_it">試試看看呢</string>
+<string name="no_try">暫時不需要</string>
+<string name="a_tips">溫馨提示</string>
+</resources>

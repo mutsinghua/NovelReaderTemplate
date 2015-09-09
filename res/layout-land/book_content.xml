@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:orientation="vertical" android:layout_margin="0dp"
+android:id="@+id/main_menu_layout"
+		
+	android:background="@drawable/s0"
+	
+	
+	>
+<ImageView android:layout_height="150dp" android:layout_width="240dp" android:layout_alignParentTop="true" 
+android:scaleType="centerInside" android:src="@drawable/splash_logo" android:id="@+id/splash_logo" android:layout_centerHorizontal="true"
+ ></ImageView>
+
+	<ListView android:id="@+id/bookContent" android:layout_width="300dp" android:layout_below="@id/splash_logo" android:layout_centerHorizontal="true"
+		android:layout_height="wrap_content" android:listSelector="@drawable/content_highlight"
+		android:fadeScrollbars = "true"
+		android:fadingEdge="horizontal"
+		android:clickable = "false"
+		 android:scrollingCache="false"
+		android:divider="@drawable/transparent_background"
+		android:dividerHeight="10dp" 
+		android:footerDividersEnabled="false"
+		android:headerDividersEnabled="false"
+		android:drawSelectorOnTop ="true"
+		android:scrollbarFadeDuration="3000"
+	   android:animationCache="false"
+		></ListView>
+</RelativeLayout>

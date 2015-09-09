@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content">
+
+	<ImageView
+		android:id="@+id/book_icon"
+		android:layout_width="48dp"
+		android:layout_height="48dp"
+
+		android:scaleType="fitXY"
+
+		android:layout_marginTop="10dp"
+		android:layout_marginBottom ="10dp"
+		android:layout_centerVertical="true"
+		android:layout_alignParentLeft="true"
+		android:layout_marginLeft="10dp"></ImageView>
+	<TextView
+		android:text="book_name"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:id="@+id/book_name"
+		android:layout_alignTop="@id/book_icon"
+		android:layout_marginLeft="10dp"
+		android:textColor="#ffffff"
+		android:textSize="16dp"
+		android:layout_toRightOf="@id/book_icon"></TextView>
+
+	<TextView
+		android:text="@string/click_to_get_detail"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:id="@+id/click_to_get_detail"
+		android:layout_below="@id/book_name"
+		android:layout_marginLeft="10dp"
+		android:textSize="12dp"
+		android:textColor="#ffbdbdb9"
+		android:layout_toRightOf="@id/book_icon"></TextView>
+		
+	<Button 
+		android:text="@string/download"
+		android:layout_width="wrap_content"
+		android:layout_height="fill_parent"
+		android:id="@+id/book_download"
+		android:layout_alignParentRight="true"
+		android:layout_centerVertical="true"
+		android:layout_marginRight="10dp"
+		android:paddingLeft="20dp"
+		android:paddingRight="20dp"
+		android:focusable="false"
+	></Button>
+</RelativeLayout>

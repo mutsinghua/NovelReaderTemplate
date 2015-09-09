@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:orientation="vertical"
+  android:layout_margin="10dp"
+  
+  >
+<LinearLayout android:id="@+id/LinearLayout01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:layout_alignParentLeft="true"
+android:paddingLeft="20dp"
+>
+<RadioGroup android:id="@+id/RadioGroup"  android:layout_width="wrap_content" android:layout_height="wrap_content">
+	<RadioButton android:text="@string/mark_as_unread" android:id="@+id/radio_unread" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20dp"></RadioButton>
+	<RadioButton android:text="@string/mark_as_reading" android:id="@+id/radio_reading" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20dp" android:visibility="gone"></RadioButton>
+	<RadioButton android:text="@string/mark_as_readed" android:id="@+id/radio_readed" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20dp"></RadioButton>
+	</RadioGroup>
+</LinearLayout>
+
+<ImageView  android:id="@+id/div" android:layout_below="@id/LinearLayout01" android:layout_centerHorizontal="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:background="@drawable/dividers"></ImageView>
+
+<CheckBox android:layout_below="@id/div"  android:text="@string/mark_all" android:id="@+id/checkbox_all" android:layout_width="wrap_content" android:layout_height="wrap_content"
+android:layout_centerHorizontal="true" android:textSize="20dp"
+></CheckBox>
+
+</RelativeLayout>

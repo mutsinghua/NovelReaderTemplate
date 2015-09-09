@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<searchable xmlns:android="http://schemas.android.com/apk/res/android"
+    android:label="@string/search_title"
+    android:hint="@string/search_hint"
+    android:voiceSearchMode="showVoiceSearchButton|launchRecognizer"
+    android:searchSuggestAuthority="com.win16.reader.annebabytran.data.SearchContentProvider"
+	android:searchSuggestIntentData="content://com.win16.reader.annebabytran.data.SearchContentProvider/category"
+	android:searchSuggestIntentAction="android.intent.action.VIEW"
+    android:searchSuggestSelection=" ?" >
+</searchable>
