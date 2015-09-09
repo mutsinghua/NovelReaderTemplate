@@ -1085,10 +1085,10 @@ public class ReaderActivity extends BaseActivity
 		showTimeHandler.removeMessages(0);
 		// }
 		// AdKnotsLayout.finish(this);
-		if( adModView!=null)
-		{
-			adModView.destroy();
-		}
+//		if( adModView!=null)
+//		{
+//			adModView.destroy();
+//		}
 		
 		super.onDestroy();
 		getDoc().closeFile();
@@ -1822,11 +1822,11 @@ public class ReaderActivity extends BaseActivity
 		}
 	};
 
-	private com.google.ads.AdView adModView;
+//	private com.google.ads.AdView adModView;
 
 //	private net.youmi.android.AdView adModView;
 
-	private com.madhouse.android.ads.AdView madAd;
+//	private com.madhouse.android.ads.AdView madAd;
 
 	/**
 	 * 广告逻辑
@@ -1843,13 +1843,13 @@ public class ReaderActivity extends BaseActivity
 		{
 	
 //			adModView = new com.google.ads.AdView(this, AdSize.IAB_BANNER, Constant.ADMOB_ID);
-			adModView = (com.google.ads.AdView)findViewById(R.id.admobView);
+//			adModView = (com.google.ads.AdView)findViewById(R.id.admobView);
 //			RelativeLayout.LayoutParams lp = new android.widget.RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
-			adModView.setAdListener(admobListener);
+//			adModView.setAdListener(admobListener);
 //			lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
 //			lp.addRule(RelativeLayout.ALIGN_PARENT_TOP);
 //			AdRequest adRequest = new AdRequest();
-			adModView.loadAd(new AdRequest());
+//			adModView.loadAd(new AdRequest());
 			
 //			adModView.ad
 //			adLayout.addView(adModView, lp);
@@ -1858,53 +1858,53 @@ public class ReaderActivity extends BaseActivity
 
 		if (Constant.SMARTMAD_SUPPORT)
 		{
-			RelativeLayout.LayoutParams lp = new android.widget.RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
-			madAd = new com.madhouse.android.ads.AdView(this, null, 0, Constant.SMARTMAD_BANNERID, 30, 0, false);
-			lp = new android.widget.RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
-			madAd.setListener(smartadListener);
-			lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-			lp.addRule(RelativeLayout.ALIGN_PARENT_TOP);
-			madAd.setVisibility(View.GONE);
-			adLayout.addView(madAd, lp);
+//			RelativeLayout.LayoutParams lp = new android.widget.RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
+//			madAd = new com.madhouse.android.ads.AdView(this, null, 0, Constant.SMARTMAD_BANNERID, 30, 0, false);
+//			lp = new android.widget.RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
+//			madAd.setListener(smartadListener);
+//			lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+//			lp.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+//			madAd.setVisibility(View.GONE);
+//			adLayout.addView(madAd, lp);
 		}
 //		long adMobTime = DynamicConfigure.getInstance().getAdmobTime();
 //		long smartAdtime = DynamicConfigure.getInstance().getSmartmadTime();
 		if( Constant.SMARTMAD_SUPPORT && Constant.ADMOB_SUPPORT)
 		{
-			int rand = ((new Random()).nextInt())%2;
-			if( rand == 2)
-			{
-				if( madAd != null)
-				{
-					madAd.setVisibility(View.VISIBLE);
-				}
-				
-			}
-			else
-			{
-				if( adModView != null)
-				{
-					adModView.setVisibility(View.VISIBLE);
-				}
-			}
+//			int rand = ((new Random()).nextInt())%2;
+//			if( rand == 2)
+//			{
+//				if( madAd != null)
+//				{
+//					madAd.setVisibility(View.VISIBLE);
+//				}
+//				
+//			}
+//			else
+//			{
+//				if( adModView != null)
+//				{
+//					adModView.setVisibility(View.VISIBLE);
+//				}
+//			}
 			
 			showTimeHandler.sendEmptyMessageDelayed(0, 1000 * 10);
 			
 		}
 		else if( Constant.SMARTMAD_SUPPORT)
 		{
-			if( madAd != null)
-			{
-				madAd.setVisibility(View.VISIBLE);
-			}
+//			if( madAd != null)
+//			{
+//				madAd.setVisibility(View.VISIBLE);
+//			}
 		}
 		else  if( Constant.ADMOB_SUPPORT)
 		{
-			if( adModView != null)
-			{
-		
-				adModView.setVisibility(View.VISIBLE);
-			}
+//			if( adModView != null)
+//			{
+//		
+//				adModView.setVisibility(View.VISIBLE);
+//			}
 		}
 		
 		// AdKnotsLayout adKnotsLayout = new AdKnotsLayout(this,
@@ -2037,35 +2037,35 @@ public class ReaderActivity extends BaseActivity
 			} else
 			{
 				
-				if( adModView != null)
-				{
-					AdRequest adRequest = new AdRequest();
-					adModView.loadAd(adRequest);
-				}
-				
-				if (madAd != null && madAd.getVisibility() == View.VISIBLE  && admobAvaiable && Constant.ADMOB_SUPPORT)
-				{
-					madAd.setVisibility(View.INVISIBLE);
-					if (adModView != null)
-					{
-						adModView.setVisibility(View.VISIBLE);
-					}
-					sendEmptyMessageDelayed(0, admobTime);
-				} else if (adModView != null && adModView.getVisibility() == View.VISIBLE  && smartAdAvaiable
-						&& Constant.SMARTMAD_SUPPORT)
-				{
-					adModView.setVisibility(View.INVISIBLE);
-					if (madAd != null)
-					{
-						madAd.setVisibility(View.VISIBLE);
-						madAd.invalidate();
-					}
-					sendEmptyMessageDelayed(0, smartAdtime);
-				}
-				else
-				{
-					sendEmptyMessageDelayed(0, 1000*10);
-				}
+//				if( adModView != null)
+//				{
+//					AdRequest adRequest = new AdRequest();
+//					adModView.loadAd(adRequest);
+//				}
+//				
+//				if (madAd != null && madAd.getVisibility() == View.VISIBLE  && admobAvaiable && Constant.ADMOB_SUPPORT)
+//				{
+//					madAd.setVisibility(View.INVISIBLE);
+//					if (adModView != null)
+//					{
+//						adModView.setVisibility(View.VISIBLE);
+//					}
+//					sendEmptyMessageDelayed(0, admobTime);
+//				} else if (adModView != null && adModView.getVisibility() == View.VISIBLE  && smartAdAvaiable
+//						&& Constant.SMARTMAD_SUPPORT)
+//				{
+//					adModView.setVisibility(View.INVISIBLE);
+//					if (madAd != null)
+//					{
+//						madAd.setVisibility(View.VISIBLE);
+//						madAd.invalidate();
+//					}
+//					sendEmptyMessageDelayed(0, smartAdtime);
+//				}
+//				else
+//				{
+//					sendEmptyMessageDelayed(0, 1000*10);
+//				}
 			}
 
 			showingTime = true;
